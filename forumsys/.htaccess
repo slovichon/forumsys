@@ -1,0 +1,6 @@
+DirectoryIndex search.php index.php
+
+<Files ~ "*.inc">
+	Order Deny,Allow
+	Deny From All
+</Files>

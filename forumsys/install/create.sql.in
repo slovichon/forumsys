@@ -1,0 +1,163 @@
+/*
+ * By Jared Yanovich <jaredy@closeedge.net>
+ * Saturday, February 01, 2003 01:41:14 AM
+ * SQL dump file for forumsys
+ */
+
+CREATE TABLE forumsys_users
+(
+	user_id		INT			NOT NULL	AUTO_INCREMENT,
+	username	VARCHAR(30)		NOT NULL,
+	password	CHAR(@@PASSWORD_LEN@@)	NOT NULL,
+	type		ENUM('1','2','3')	NOT NULL,
+	email		VARCHAR(30),
+
+	new_password	CHAR(@@PASSWORD_LEN@@),
+	recover_key	CHAR(20),
+
+	cancel_key	CHAR(20),
+
+	PRIMARY KEY(user_id),
+	UNIQUE(user_id),
+	UNIQUE(username)
+);
+
+CREATE TABLE forumsys_buddies
+(
+	user_id		INT			NOT NULL,
+	buddy_id	INT			NOT NULL,
+
+	PRIMARY KEY(user_id),
+	INDEX(buddy_id)
+);
+
+/*
+ * The `enemy' list will deny private messages, viewing
+ * of messages (with an option) from that user, listing
+ * of "online" guests, and other things (this should be
+ * modular).
+ */
+CREATE TABLE forumsys_enemies
+(
+	user_id		INT			NOT NULL,
+	enemy_id	INT			NOT NULL,
+
+	PRIMARY KEY(user_id),
+	INDEX(enemy_id)
+);
+
+CREATE TABLE forumsys_moderators
+(
+	mod_id		INT			NOT NULL,
+	cat_id		INT,
+	board_id	INT,
+
+	INDEX(mod_id)
+);
+
+CREATE TABLE forumsys_posts
+(
+	post_id		INT			NOT NULL	AUTO_INCREMENT,
+	user_id		INT			NOT NULL,
+	cat_id		INT			NOT NULL,
+	board_id	INT			NOT NULL,
+
+	subject		VARCHAR(100),
+	message		MEDIUMTEXT		NOT NULL,
+
+	post_date	TIMESTAMP,
+	mod_date	TIMESTAMP,
+
+	reply_id	INT,
+	parent_post_id	INT,
+	is_reply	BOOL,
+
+	email_replies	BOOL,
+	is_closed	BOOL,
+
+	is_private	BOOL,
+/*	private_user_id	INT,*/
+
+	-- is_deleted	BOOL, /* Marked until explicitly deleted */
+
+	is_notice	BOOL,
+
+	ip		VARCHAR(15), /* 123.567.901.345 */
+
+	PRIMARY KEY(post_id),
+	UNIQUE(post_id),
+	INDEX(cat_id),
+	INDEX(board_id),
+	INDEX(reply_id)
+);
+
+CREATE TABLE forumsys_post_priv
+(
+	post_id		INT			NOT NULL,
+	allowed_user_id	INT			NOT NULL,
+
+	PRIMARY KEY(post_id)
+);
+
+CREATE TABLE forumsys_boards
+(
+	board_id	INT		NOT NULL	AUTO_INCREMENT,
+	cat_id		INT		NOT NULL,
+	name		VARCHAR(50),
+	description	VARCHAR(255),
+
+	create_date	TIMESTAMP,
+	mod_date	TIMESTAMP,
+
+	/* Acculumated data */
+	num_threads	INT		NOT NULL				DEFAULT 0,
+	num_posts	INT		NOT NULL				DEFAULT 0,
+
+	PRIMARY KEY(board_id),
+	UNIQUE(board_id),
+	INDEX(cat_id)
+);
+
+/* For grouping similiar boards together */
+CREATE TABLE forumsys_cats
+(
+	cat_id		INT		NOT NULL	AUTO_INCREMENT,
+	name		VARCHAR(50),
+	description	VARCHAR(255),
+
+	create_date	TIMESTAMP,
+	mod_date	TIMESTAMP,
+
+	/* Acculumated data */
+	num_boards	INT		NOT NULL				DEFAULT 0,
+	num_threads	INT		NOT NULL				DEFAULT 0,
+	num_posts	INT		NOT NULL				DEFAULT 0,
+
+	PRIMARY KEY(cat_id),
+	UNIQUE(cat_id)
+);
+
+/*
+INSERT INTO forumsys_cats (name,description) VALUES ('Test 1',	'This is test category one');
+INSERT INTO forumsys_cats (name,description) VALUES ('Test 2',	'This is test category two');
+INSERT INTO forumsys_cats (name,description) VALUES ('Test 3',	'This is test category three');
+
+INSERT INTO forumsys_boards (cat_id,name,description) VALUES (1,'Testboard a.a','testing board for a.a');
+
+INSERT INTO forumsys_boards (cat_id,name,description) VALUES (2,'Testboard b.a','testing board for b.a');
+INSERT INTO forumsys_boards (cat_id,name,description) VALUES (2,'Testboard b.b','testing board for b.b');
+
+INSERT INTO forumsys_boards (cat_id,name,description) VALUES (3,'Testboard c.a','testing board for c.a');
+INSERT INTO forumsys_boards (cat_id,name,description) VALUES (3,'Testboard c.b','testing board for c.b');
+INSERT INTO forumsys_boards (cat_id,name,description) VALUES (3,'Testboard c.c','testing board for c.c');
+*/
+
+/* These should actually just be confirmation variables */
+CREATE TABLE forumsys_config
+(
+	crypt_key	CHAR(@@CRYPT_KEY_LEN@@)
+	user_fields	TEXT,
+	post_fields	TEXT,
+	board_fields	TEXT,
+	cat_fields	TEXT,
+);

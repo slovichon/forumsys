@@ -1,0 +1,79 @@
+<?php
+	/*
+	 * forumsys
+	 * forumsys configuration file
+	 *
+	 * Consult the doc/directives in the root
+	 * forumsys directory for detailed explanations
+	 * of the following directives.
+	 */
+
+	forumsys_conf("time_format",		"l, F d, Y h:i:s A Z");
+	forumsys_conf("time_mini_format",	"m-d-y h:i:s");
+
+	forumsys_conf("result_limit",		25);
+	forumsys_conf("page_limit",		5);
+
+	forumsys_conf("auth_type",		FORUMSYS_AUTH_SESSION);
+
+	forumsys_conf("hier_reply",		FALSE);
+
+	forumsys_conf("post_word_length",	30);
+	forumsys_conf("post_auto_urls",		TRUE);
+	forumsys_conf("post_auto_url_tlds",	array("com","co.uk","org","net","gov","edu","cc"));
+	forumsys_conf("post_allowed_html",	array("br","p","pre","b","i"));
+	forumsys_conf("post_html_attr",		FALSE);
+
+	forumsys_conf("dbh_host",		"");
+	forumsys_conf("dbh_username",		"");
+	forumsys_conf("dbh_password",		"");
+	forumsys_conf("dbh_type",		"MySQL");
+	forumsys_conf("dbh_database",		"");
+
+	forumsys_conf("of_type",		"HTML");
+
+	forumsys_conf
+	(
+		"levels",
+		array
+		(
+			FORUMSYS_USER_REG	=> "Regular User",
+			FORUMSYS_USER_MOD	=> "Moderator",
+			FORUMSYS_USER_ADMIN	=> "Administrator"
+		)
+	);
+
+	forumsys_conf
+	(
+		"nicknames",
+		array
+		(
+			0	=> "Plebian",
+			50	=> "Regular",
+			200	=> "Jedi"
+		)
+	);
+
+	forumsys_conf("sys_root",		"/home/user/htdocs");
+	forumsys_conf("web_root",		"/~user");
+
+	forumsys_conf("error_log",		forumsys_conf("sys_root") . "/../forumsys/errors.txt");
+	forumsys_conf("show_errors",		FALSE);
+	forumsys_conf("mail_errors",		FALSE);
+	forumsys_conf("trigger_errors",		FALSE);
+
+	forumsys_conf("path",			"/forumsys");
+
+	forumsys_conf("site_name",		"My Site");
+	forumsys_conf("site_uri",		"http://www.mysite.com/");
+	forumsys_conf("site_email",		"webmaster@mysite.com");
+	forumsys_conf("site_desc",		"This is a Web site about foo...");
+
+	forumsys_conf("use_cache",		TRUE);
+
+	forumsys_conf("templates_dir",		forumsys_conf("sys_root") . "/../forumsys/templates");
+	forumsys_conf("cache_dir",		forumsys_conf("sys_root") . "/../forumsys/cache");
+	forumsys_conf("temp_dir",		"/tmp");
+
+	forumsys_conf("crypt_key",		"@@CRYPT_KEY@@");
+?>

@@ -1,0 +1,147 @@
+html,body,textarea
+{
+	scrollbar-3d-light-color:	#0000FF;
+	scrollbar-arrow-color:		#000066;
+	scrollbar-base-color:		#000000;
+	scrollbar-face-color:		#CCCCFF;
+	scrollbar-dark-shadow-color:	#000066;
+	scrollbar-shadow-color:		#000066;
+	scrollbar-highlight-color:	#6666FF;
+}
+
+body
+{
+	font-family:Verdana,Tahoma,Sans-Serif;
+}
+
+input,select,textarea
+{
+	font-family:Verdana,Tahoma,Sans-Serif;
+	border:1px solid #000066;
+}
+
+.forumsysSmallTextArea
+{
+	width:500px;
+	height:150px;
+}
+
+.forumsysTextArea
+{
+	width:500px;
+	height:350px;
+}
+
+.forumsysButton
+{
+	cursor:hand;
+	font-weight:bold;
+	border-style:outset;
+	background-color:#336699;
+	color:#FFFFFF;
+}
+
+.forumsysTable
+{
+	border:1px solid black;
+/*	width:100%;*/
+	margin-bottom:3px;
+}
+
+.forumsysInfo
+{
+	font-size:11px;
+	text-align:right;
+}
+/*
+.forumsysHeader
+{
+	text-align:center;
+	background-color:#330066;
+	color:#FFCCCC;
+	padding:2px;
+	border-bottom:1px solid black;
+	font-size:14px;
+}
+*/
+/*
+.forumsysTable th
+*/
+.forumsysHeader
+{
+	text-align:center;
+	background-color:#000066;
+	color:#CCCCFF;
+	padding:2px;
+	font-size:14px;
+}
+
+.forumsysFooter
+{
+	text-align:center;
+	background-color:#FFCC99;
+	color:#000000;
+	font-size:12px;
+	padding:2px;
+}
+
+.forumsysDesc
+{
+	text-align:right;
+	background-color:#FF9933;
+	color:#FFFFFF;
+	border-right:1px solid black;
+	border-bottom:1px solid black;
+	vertical-align:top;
+/*	width:50%;*/
+	padding:2px;
+}
+
+.forumsysData1
+{
+	background-color:#DDDDFF;
+	border-bottom:1px solid black;
+	padding:2px;
+}
+
+.forumsysData2
+{
+	background-color:#EEEEFF;
+	border-bottom:1px solid black;
+	padding:2px;
+}
+
+hr
+{
+	height:1px;
+	border:0px;
+	border-top:1px solid #000000;
+	color:#000000;
+}
+
+.forumsysHeader a:link,.forumsysTable th a:link
+{
+	color:#FFFF66;
+}
+
+.forumsysHeader a:visited,.forumsysTable th a:visited
+{
+	color:#FFFFCC;
+}
+
+.forumsysStrong
+{
+	font-weight:bold;
+}
+
+h3
+{
+	border:1px dashed black;
+	padding:3px;
+	background-color:#CCCCFF;
+}
+
+form
+{
+	margin:0px;
+}

@@ -1,0 +1,5 @@
+<?php
+	require "forumsys.inc";
+
+
+?>
