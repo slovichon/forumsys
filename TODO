@@ -3,3 +3,20 @@ Description						Progress (3)		Target Version	Priority (3)
 hierarchical and regular replying
 private messages
 
+search.php controls everything
+- list forums
+- list posts under a forum
+- list posts according to (whatever)
+- list post and its replies
+
+?show=forums	critera[]=cat_id value[]=(cat id)             criteria[]=board_id value[]=(board id)
+?show=posts	
+
+
+
+notes about forum listing
+	- all cats should list, at least their name/links
+	- limit
+
+notes about post listing
+	- reply_id = 0 for things like board listing
